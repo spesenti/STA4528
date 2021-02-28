@@ -10,7 +10,7 @@ Nsim <- 10^3
 C_para <- c(0)
 
 # positive correlation
-# C_para <- 0.8
+#  C_para <- 0.8
 # positive correlation
 # C_para <- -0.8
 
@@ -53,7 +53,7 @@ C_para <- c(0)
 
 # positive correlation
 # C_para <- 0.8
-# positive correlation
+# negative correlation
 # C_para <- -0.8
 
 
