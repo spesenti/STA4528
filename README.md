@@ -21,5 +21,6 @@ This repository consists of the following `R` files:
     b) `Plot_t()` plots Bivariate t copula against t marginals.
         
         
-3. `Plot_copula.R` plots Gaussian and t copulas using the above functions.
+3. `Plot_copula.R` plots Gaussian and t copulas using the above functions as
+   well as Archimedean copulas.
     

@@ -21,7 +21,13 @@ Mlt_gaussian_uni <- mvdc(copula = C_Gaussian, margins = rep("unif", 2),
 # sample 
 Mlt_samp <- rMvdc(Nsim, Mlt_gaussian_uni)
 # scatter plot
-plot(Mlt_samp, main = "Gaussian coupla", xlab = "U1", ylab = "U2")
+plot(Mlt_samp, main = "Gaussian coupla", xlab = expression(U[1]), ylab = expression(U[2]))
+# Kendall's tau
+tau <- tau(C_Gaussian)
+# tail indices
+tail_dep <- lambda(C_Gaussian)
+dependence <- c("tau" = tau, "lambda" = tail_dep)
+return(dependence)  
 }
 
 
@@ -50,6 +56,12 @@ Plot_Gaussian <- function(C_para, Nsim){
   Mlt_samp <- rMvdc(Nsim, Mlt_gaussian_norm)
   # scatter plot
   plot(Mlt_samp, main = "Gaussian Coupla with N(0,1) marginals", 
-       xlab = "X1 = N(0,1)", ylab = "X2 = N(0,1)")
+       xlab = expression(italic(N)(0,1)), ylab = expression(italic(N)(0,1)))
+  # Kendall's tau
+  tau <- tau(C_Gaussian)
+  # tail indices
+  tail_dep <- lambda(C_Gaussian)
+  dependence <- c("tau" = tau, "lambda" = tail_dep)
+return(dependence)  
   
 }

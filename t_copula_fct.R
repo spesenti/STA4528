@@ -4,7 +4,7 @@
 
 #' inputs:
 #' C_para    = copula parameter
-#' df        = degree of freedom of coupla and marginals
+#' df        = degree of freedom of copula and marginals
 #' NSim      = number of simulations 
 
 
@@ -22,8 +22,13 @@ Plot_t_Copula <- function(C_para, df, Nsim){
   # sample 
   Mlt_samp <- rMvdc(Nsim, Mlt_t_uni)
   # scatter plot
-  plot(Mlt_samp, main = "t coupla", xlab = "U1", ylab = "U2")
-  
+  plot(Mlt_samp, main = "t coupla", xlab = expression(U[1]), ylab = expression(U[2]))
+  # Kendall's tau
+  tau <- tau(C_t)
+  # tail indices
+  tail_dep <- lambda(C_t)
+  dependence <- c("tau" = tau, "lambda" = tail_dep)
+  return(dependence) 
 }
 
 
@@ -51,6 +56,11 @@ Plot_t <- function(C_para, df, Nsim){
   # sample 
   Mlt_samp <- rMvdc(Nsim, Mlt_t_t)
   # scatter plot
-  plot(Mlt_samp, main = "t coupla", xlab = "t1", ylab = "t2")
-  
+  plot(Mlt_samp, main = "t coupla", xlab = expression(t[1]), ylab = expression(t[1]))
+  # Kendall's tau
+  tau <- tau(C_t)
+  # tail indices
+  tail_dep <- lambda(C_t)
+  dependence <- c("tau" = tau, "lambda" = tail_dep)
+  return(dependence) 
 }
