@@ -1,25 +1,35 @@
 # Plotting copulas for different parameters
-
+require(copula)
 Nsim <- 10^3
 
 ##################### Bivariate copulas #####################
 
 ##################### Independent copula #####################
-indep_cop <- indepCopula(2)
-x <- rCopula(Nsim, indep_cop)
+indep_copula <- indepCopula(2)
+x <- rCopula(Nsim, indep_copula)
 plot(x, main = "independence coupla", 
      xlab = expression(U[1]), ylab = expression(U[2]))
 # Kendall's tau
-tau(indep_cop)
+tau(indep_copula)
 # tail indices
-lambda(indep_cop)
+lambda(indep_copula)
 
 
 ##################### Comonotonic copula #####################
+# (U, U) has a comonotonic copula
+u_sim <- runif(Nsim, 0,1)
+como_copula <- cbind(u_sim, u_sim)
 
+plot(como_copula, main = "comonotonic coupla", 
+     xlab = expression(U[1]), ylab = expression(U[2]))
 
 ##################### Countermonotonic copula #####################
+# (U, 1 - U) has a comonotonic copula
+u_sim <- runif(Nsim, 0,1)
+como_copula <- cbind(u_sim, 1 - u_sim)
 
+plot(como_copula, main = "comonotonic coupla", 
+     xlab = expression(U[1]), ylab = expression(U[2]))
 
 
 ##################### Gaussian copula #####################
@@ -60,15 +70,6 @@ tau(gumbel_copula)
 lambda(gumbel_copula)
 
 
-frank_copula <- frankCopula(param = 5, dim = 2)
-plot(rCopula(Nsim, frank_copula), main = "Frank coupla", 
-     xlab = expression(U[1]), ylab = expression(U[2]))
-# Kendall's tau
-tau(frank_copula)
-# tail indices
-lambda(frank_copula)
-# ??????????????
-
 alpha <- c(0.2, 0.7)
 Marshall_Olkin_copula <- moCopula(alpha)
 plot(rCopula(Nsim, Marshall_Olkin_copula), main = "Marshall Olkin coupla", 
@@ -81,6 +82,8 @@ lambda(Marshall_Olkin_copula)
 
 ##################### 3-D copulas #####################
 
-persp(frank.cop, dCopula)
+# param == 1 is the independence copula
+gumbel_copula <- gumbelCopula(param = 2, dim = 3)
+persp(gumbel_copula, dCopula)
 
 
