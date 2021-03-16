@@ -79,11 +79,3 @@ tau(Marshall_Olkin_copula)
 # tail indices
 lambda(Marshall_Olkin_copula)
 
-
-##################### 3-D copulas #####################
-
-# param == 1 is the independence copula
-gumbel_copula <- gumbelCopula(param = 2, dim = 3)
-persp(gumbel_copula, dCopula)
-
-
